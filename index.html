@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>BNI 華豐分會 × 桃園市政府｜商務參訪日期調查</title>
+<meta name="description" content="BNI 華豐分會 桃園市政府商務參訪日期調查，候選日期：11/6、11/13、11/20 週五下午。" />
+<style>
+:root{
+  --bni:#cf142b;
+  --bni-dark:#a90f22;
+  --ink:#202733;
+  --muted:#6d7480;
+  --line:#e6e8ec;
+  --soft:#f7f8fa;
+  --white:#fff;
+  --ok:#0f8a5f;
+  --shadow:0 18px 48px rgba(20,28,38,.10);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  background:linear-gradient(135deg,#fff 0%,#fafafa 55%,#f2f3f5 100%);
+  color:var(--ink);
+}
+.wrap{max-width:980px;margin:0 auto;padding:28px 18px 56px}
+.hero{
+  position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);
+  border-radius:28px;box-shadow:var(--shadow);padding:34px 34px 28px;
+}
+.hero:after{
+  content:"";position:absolute;right:-90px;bottom:-110px;width:360px;height:220px;
+  background:linear-gradient(150deg,transparent 0 30%,#d7d9dd 31% 45%,var(--bni) 46% 100%);
+  transform:rotate(-4deg);opacity:.98;pointer-events:none;
+}
+.brand{font-size:56px;font-weight:900;letter-spacing:-2px;color:var(--bni);line-height:1}
+.kicker{display:inline-block;margin-top:18px;background:var(--bni);color:#fff;font-weight:700;border-radius:999px;padding:8px 14px;font-size:14px}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.15;margin:20px 0 10px;letter-spacing:-1px;max-width:760px}
+.sub{font-size:18px;color:#4d5560;line-height:1.7;max-width:700px;margin:0;position:relative;z-index:1}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px;position:relative;z-index:1}
+.info{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:16px}
+.info b{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}.info span{font-size:18px;font-weight:800}
+.card{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:26px}
+.section-title{font-size:22px;font-weight:850;margin:0 0 8px}.section-note{color:var(--muted);margin:0 0 18px;line-height:1.6}
+.field{margin-top:18px}.field label{display:block;font-weight:750;margin-bottom:8px}.req{color:var(--bni)}
+input[type=text],input[type=tel],input[type=email]{width:100%;padding:14px 14px;border:1px solid #cfd3d8;border-radius:14px;font-size:16px;outline:none;background:#fff}
+input:focus{border-color:var(--bni);box-shadow:0 0 0 3px rgba(207,20,43,.10)}
+.date-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.date-option{position:relative}
+.date-option input{position:absolute;opacity:0;pointer-events:none}
+.date-option label{display:block;border:2px solid var(--line);border-radius:18px;padding:18px 16px;cursor:pointer;transition:.18s;background:#fff;min-height:116px}
+.date-option label:hover{border-color:#c5c8cc;transform:translateY(-1px)}
+.date-option input:checked+label{border-color:var(--bni);background:#fff6f7;box-shadow:0 8px 24px rgba(207,20,43,.10)}
+.date-big{font-size:27px;font-weight:900;color:var(--ink)}.date-option input:checked+label .date-big{color:var(--bni)}
+.week{font-size:15px;color:var(--muted);margin-top:5px}.slot{font-size:15px;font-weight:700;margin-top:8px;color:#3c434c}
+.preference{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.pill{border:1px solid var(--line);border-radius:999px;padding:9px 12px;background:#fff;cursor:pointer}.pill input{margin-right:6px}
+.deadline{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#fff5f6;border:1px solid #ffd5da;border-radius:18px;padding:16px 18px;margin-top:20px}
+.deadline b{color:var(--bni)}.countdown{font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap}
+.actions{display:flex;gap:12px;margin-top:22px;align-items:center}.btn{border:0;border-radius:14px;padding:14px 22px;font-size:16px;font-weight:800;cursor:pointer}.primary{background:var(--bni);color:#fff}.primary:hover{background:var(--bni-dark)}.secondary{background:#eef0f2;color:#2d333b}
+.msg{margin-top:16px;border-radius:14px;padding:13px 14px;display:none}.msg.ok{display:block;background:#edf9f4;color:#0b6c4a;border:1px solid #cbeedf}.msg.err{display:block;background:#fff2f3;color:#a41024;border:1px solid #ffd2d8}
+.small{font-size:13px;color:var(--muted);line-height:1.6;margin-top:16px}
+.footer{text-align:center;color:#8a9098;font-size:13px;padding:24px 6px}
+@media(max-width:760px){.hero{padding:26px 20px 22px}.brand{font-size:46px}.info-grid,.date-grid{grid-template-columns:1fr}.card{padding:22px 18px}.deadline{align-items:flex-start;flex-direction:column}.actions{flex-direction:column}.btn{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="brand">BNI</div>
+    <div class="kicker">華豐分會｜日期意願調查</div>
+    <h1>桃園市政府 商務參訪</h1>
+    <p class="sub">規劃拜會桃園市政府，進行產業政策、企業資源與商務合作交流。請勾選您可以參加的日期，可複選。</p>
+    <div class="info-grid">
+      <div class="info"><b>活動形式</b><span>市府拜會＋商務交流</span></div>
+      <div class="info"><b>活動時段</b><span>週五下午</span></div>
+      <div class="info"><b>調查截止</b><span>2026/10/19 23:59</span></div>
+    </div>
+  </section>
+
+  <form id="surveyForm" class="card">
+    <h2 class="section-title">參加意願</h2>
+    <p class="section-note">請填寫基本資料並勾選可出席日期。調查結果將作為最終行程確認依據。</p>
+
+    <div class="field">
+      <label for="name">姓名 <span class="req">*</span></label>
+      <input id="name" name="name" type="text" required placeholder="請輸入姓名" />
+    </div>
+    <div class="field">
+      <label for="company">公司／產業別 <span class="req">*</span></label>
+      <input id="company" name="company" type="text" required placeholder="例如：○○科技／AI 系統整合" />
+    </div>
+    <div class="field">
+      <label for="phone">聯絡電話</label>
+      <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="選填" />
+    </div>
+
+    <div class="field">
+      <label>可參加日期 <span class="req">*</span>（可複選）</label>
+      <div class="date-grid">
+        <div class="date-option">
+          <input id="d1" name="dates" type="checkbox" value="2026-11-06" />
+          <label for="d1"><div class="date-big">11/06</div><div class="week">星期五</div><div class="slot">下午時段</div></label>
+        </div>
+        <div class="date-option">
+          <input id="d2" name="dates" type="checkbox" value="2026-11-13" />
+          <label for="d2"><div class="date-big">11/13</div><div class="week">星期五</div><div class="slot">下午時段</div></label>
+        </div>
+        <div class="date-option">
+          <input id="d3" name="dates" type="checkbox" value="2026-11-20" />
+          <label for="d3"><div class="date-big">11/20</div><div class="week">星期五</div><div class="slot">下午時段</div></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>最優先日期</label>
+      <div class="preference">
+        <label class="pill"><input type="radio" name="preferred" value="2026-11-06">11/06</label>
+        <label class="pill"><input type="radio" name="preferred" value="2026-11-13">11/13</label>
+        <label class="pill"><input type="radio" name="preferred" value="2026-11-20">11/20</label>
+        <label class="pill"><input type="radio" name="preferred" value="都可以">都可以</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="note">其他建議／備註</label>
+      <input id="note" name="note" type="text" placeholder="例如：希望 13:30 後開始、可協助交通安排等" />
+    </div>
+
+    <div class="deadline">
+      <div><b>調查 7 天截止</b><br><span>截止時間：2026/10/19（一）23:59</span></div>
+      <div class="countdown" id="countdown">計算中…</div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">送出日期調查</button>
+      <button type="reset" class="btn secondary">重新填寫</button>
+    </div>
+    <div id="message" class="msg"></div>
+    <div class="small">您填寫的資料僅供本次參訪聯繫及日期統計使用。送出後請確認畫面顯示「已送出」。</div>
+  </form>
+
+  <div class="footer">BNI 華豐分會｜桃園市政府商務參訪日期調查</div>
+</div>
+
+<script>
+const DEADLINE = new Date('2026-10-19T23:59:00+08:00');
+const SUBMIT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyVAlCMAX-mLY3u9QgQAy2oUqHDfbz43ft9W8dsLxIIK_eTQflnYH4PNxftgcdoXgfz/exec'; // 部署 GAS Web App 後，將網址貼到這裡
+
+function updateCountdown(){
+  const el=document.getElementById('countdown');
+  const diff=DEADLINE-new Date();
+  if(diff<=0){el.textContent='調查已截止';document.querySelector('.primary').disabled=true;document.querySelector('.primary').style.opacity='.5';return;}
+  const d=Math.floor(diff/86400000), h=Math.floor(diff%86400000/3600000), m=Math.floor(diff%3600000/60000);
+  el.textContent=`剩 ${d} 天 ${h} 小時 ${m} 分`;
+}
+updateCountdown();setInterval(updateCountdown,60000);
+
+const form=document.getElementById('surveyForm');
+const msg=document.getElementById('message');
+form.addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  msg.className='msg';msg.textContent='';
+  if(new Date()>DEADLINE){msg.className='msg err';msg.textContent='本次日期調查已截止。';return;}
+  const dates=[...document.querySelectorAll('input[name="dates"]:checked')].map(x=>x.value);
+  if(!dates.length){msg.className='msg err';msg.textContent='請至少勾選一個可參加日期。';return;}
+  const data={
+    name:form.name.value.trim(), company:form.company.value.trim(), phone:form.phone.value.trim(),
+    dates, preferred:(form.preferred.value||''), note:form.note.value.trim(), submitted_at:new Date().toISOString()
+  };
+  const submitButton=form.querySelector('[type=submit]');
+  submitButton.disabled=true; submitButton.textContent='送出中…';
+  try{
+    if(!SUBMIT_ENDPOINT || SUBMIT_ENDPOINT.includes('PASTE_DEPLOYED_WEB_APP_URL_HERE')){
+      throw new Error('GAS_URL_NOT_SET');
+    }
+    const body = new URLSearchParams({
+      name:data.name,
+      company:data.company,
+      phone:data.phone,
+      dates:data.dates.join(','),
+      preferred:data.preferred,
+      note:data.note,
+      submitted_at:data.submitted_at
+    });
+    const r=await fetch(SUBMIT_ENDPOINT,{method:'POST',body});
+    if(!r.ok) throw new Error('submit failed');
+    const result=await r.json();
+    if(!result.ok) throw new Error(result.message || 'submit failed');
+    msg.className='msg ok';msg.textContent='已送出，謝謝您的回覆！';
+    form.reset();
+  }catch(err){msg.className='msg err';msg.textContent=(err.message==='GAS_URL_NOT_SET'?'尚未設定 Google Apps Script Web App 網址。':'送出失敗，請稍後再試。');}
+  finally{submitButton.disabled=new Date()>DEADLINE;submitButton.textContent='送出日期調查';}
+});
+</script>
+</body>
+</html>
